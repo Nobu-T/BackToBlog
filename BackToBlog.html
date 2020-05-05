@@ -10,6 +10,12 @@
 <div id="output_csv">...</div>
 
 <script>
+var today = new Date();
+var year = today.getFullYear();
+var month = today.getMonth() + 1;
+var day = today.getDate();
+var blogtoday = year + '/' + month + '/' + day ;
+  
 function getCSV() {
   var req = new XMLHttpRequest();
   req.open('get', './bloglist20200505.csv', true);
@@ -29,7 +35,7 @@ function setCSV(str) {
       data.push(dataArr.map(x => x.trim()));
     }
   });
-  var t = '<dl>';
+  var t = '<dl>' + blogtoday; 
   data.forEach(x => {
     t += `<dt>${x[0]}</dt><dd>価格は${x[1]}円</dd>`;
   });
