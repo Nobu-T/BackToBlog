@@ -23,27 +23,46 @@ function getCSV() {
     setCSV(req.responseText);
   };
 }
+//function setCSV(str) {
+//  var data = [];
+//  var dataArr;
+//  var r = document.getElementById('output_csv');
+//  var tmp = str.split('\n');
+//  tmp.forEach(x => {
+//    dataArr = x.split(',');
+//    if (dataArr[0]) {
+//      data.push(dataArr.map(x => x.trim()));
+//    }
+//  });
+//  var t = '<dl>Back to the Blog on : ' + blogtoday; 
+//  data.forEach(x => {
+//    if(dataArr[0].match(blogtoday)!=null){
+//      t += `<dt>${x[0]}</dt><dd><a href=\"${x[2]}\">${x[1]}</a></dd>`;
+//    }
+// 
+//  });
+//  t += '</dl>' ;
+//  r.innerHTML = t;
+//}
 function setCSV(str) {
   var data = [];
   var dataArr;
   var r = document.getElementById('output_csv');
   var tmp = str.split('\n');
-  tmp.forEach(x => {
-    dataArr = x.split(',');
-    if (dataArr[0]) {
-      data.push(dataArr.map(x => x.trim()));
-    }
-  });
-  var t = '<dl>Back to the Blog on : ' + blogtoday; 
-  data.forEach(x => {
-    if(dataArr[0].match(blogtoday)!=null){
-      t += `<dt>${x[0]}</dt><dd><a href=\"${x[2]}\">${x[1]}</a></dd>`;
-    }
- 
-  });
-  t += '</dl>' ;
+
+  var t = '<dl> Back to the Blog on :'+ blogtoday;
+
+  for (let i = 0; i < tmp.length; i++) {
+   if (tmp[i].match(blogtoday)!=null){
+     dataArr = tmp[i].split(',');
+     t += '<dt>' + dataArr[0] + '</dt><dd><a href=\"' + dataArr[2] + '\">' + dataArr[1] + '</a></dd>';
+   }
+  }
+  t += '</dl>';
   r.innerHTML = t;
-}
+} 
+ 
+  
 getCSV();
 </script>
 
