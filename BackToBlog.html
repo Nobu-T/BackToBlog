@@ -11,10 +11,9 @@
 
 <script>
 var today = new Date();
-var year = today.getFullYear();
 var month = today.getMonth() + 1;
 var day = today.getDate();
-var blogtoday = year + '/' + month + '/' + day ;
+var blogtoday = '20..' + '/' + month + '/' + day ;
   
 function getCSV() {
   var req = new XMLHttpRequest();
@@ -37,7 +36,10 @@ function setCSV(str) {
   });
   var t = '<dl>' + blogtoday; 
   data.forEach(x => {
-    t += '<dt>${x[0]}</dt><dd><a href=\/"$x[2]\">${x[1]}</a></dd>';
+    if(dataArr[0].match(blogtoday)){
+      t += `<dt>${x[0]}</dt><dd><a href=\"${x[2]}\">${x[1]}</a></dd>`;
+    }
+ 
   });
   t += '</dl>';
   r.innerHTML = t;
