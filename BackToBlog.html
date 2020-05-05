@@ -34,11 +34,11 @@ function setCSV(str) {
       data.push(dataArr.map(x => x.trim()));
     }
   });
-  var t = '<dl>Back to the Blog on' + blogtoday; 
+  var t = '<dl>Back to the Blog on : ' + blogtoday; 
   data.forEach(x => {
-    if(dataArr[0].match(blogtoday)){
+    //if(dataArr[0].match(blogtoday)){
       t += `<dt>${x[0]}</dt><dd><a href=\"${x[2]}\">${x[1]}</a></dd>`;
-    }
+    //}
  
   });
   t += '</dl>' ;
